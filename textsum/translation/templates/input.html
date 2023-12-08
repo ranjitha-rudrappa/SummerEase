@@ -1,0 +1,7 @@
+<!-- summarization/templates/summarization/text.html -->
+
+<form method="post" action="{% url 'generate_summary' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Generate Summary</button>
+</form>

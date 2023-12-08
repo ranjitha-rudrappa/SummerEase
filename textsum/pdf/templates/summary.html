@@ -1,0 +1,24 @@
+<!-- pdf_summarizer/templates/pdf_summarizer/summary.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Summary</title>
+</head>
+
+<body>
+
+    <h2>PDF Summary</h2>
+
+    <p>PDF File: {{ pdf_document.pdf_file.name }}</p>
+    <p>Pages to Summarize: {{ pdf_document.pages_to_summarize }}</p>
+
+    <h3>Summarized Text</h3>
+    <p>{{ pdf_document.summarized_text|safe }}</p>
+
+</body>
+
+</html>

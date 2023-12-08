@@ -1,0 +1,41 @@
+<!-- text_checker/templates/text_checker/text.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Text Checker</title>
+</head>
+
+<body>
+
+    <h2>Text Checker</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Check Text</button>
+    </form>
+
+    {% if input_text %}
+        <h3>Checked Text</h3>
+        <p>{{ input_text|safe }}</p>
+
+        {% if errors %}
+            <h3>Errors</h3>
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error.message }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No errors found!</p>
+        {% endif %}
+    {% endif %}
+
+</body>
+
+</html>
