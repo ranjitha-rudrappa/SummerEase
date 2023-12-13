@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: #007BFF;
+            font-style: italic;
+        }
+
+        .welcome-note {
+            font-family: 'Georgia', serif;
+            font-size: 18px;
+            color: #28A745;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .action-button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome to SummEase</h2>
+
+    <p class="welcome-note">
+        Summarize text or PDF effortlessly with SummEase. Simply click on a button below to get started!
+    </p>
+
+    <div class="button-container">
+        <button class="action-button" onclick="redirectToInputText()">Input Text</button>
+        <button class="action-button" onclick="redirectToPdfSummary()">PDF to Summary</button>
+    </div>
+
+    <script>
+        function redirectToInputText() {
+            alert("Display Input Text");
+        }
+
+        function redirectToPdfSummary() {
+            alert("Display pdf Text");
+        }
+    </script>
+</body>
+</html>
