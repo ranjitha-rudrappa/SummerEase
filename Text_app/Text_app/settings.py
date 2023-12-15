@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'login'
+    'login',
+    'pdf_to_summary',
+    'text'
 ]
 
 MIDDLEWARE = [
@@ -77,9 +79,12 @@ WSGI_APPLICATION = 'Text_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME':'db1',
+        'NAME':'app',
     }
 }
+
+# settings.py
+AUTH_USER_MODEL = 'login.User'
 
 
 # Password validation
@@ -122,3 +127,17 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# settings.py
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'sampleuser788@gmail.com'
+EMAIL_HOST_PASSWORD = 'vcdl vzmt ulbe hobq'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_AGE = 1209600

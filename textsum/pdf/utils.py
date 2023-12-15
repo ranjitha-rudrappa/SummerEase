@@ -30,33 +30,51 @@
 
 # pdf_summarizer/utils.py
 
-from PyPDF2 import PdfReader
-from transformers import BartForConditionalGeneration, BartTokenizer
-import torch
+# from PyPDF2 import PdfReader
+# from transformers import BartForConditionalGeneration, BartTokenizer
+# import torch
+#
+# def summarize_pdf(pdf_path, pages_to_summarize):
+#     pdf_reader = PdfReader(pdf_path)
+#     summarized_text = ''
+#
+#     # Load the BART model and tokenizer
+#     model_name = 'facebook/bart-large-cnn'
+#     tokenizer = BartTokenizer.from_pretrained(model_name)
+#     model = BartForConditionalGeneration.from_pretrained(model_name)
+#
+#     for page_num in pages_to_summarize.split(','):
+#         try:
+#             page_num = int(page_num.strip())
+#             if 1 <= page_num <= len(pdf_reader.pages):
+#                 page_text = pdf_reader.pages[page_num - 1].extract_text()
+#
+#                 # Tokenize and generate abstractive summary
+#                 inputs = tokenizer(page_text, return_tensors="pt", max_length=1024, truncation=True)
+#                 summary_ids = model.generate(inputs['input_ids'], max_length=500, num_beams=4, length_penalty=5.0,
+#                                              early_stopping=True)
+#                 summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+#
+#                 summarized_text += summary + '\n\n'
+#         except ValueError:
+#             pass
+#
+#     return summarized_text.strip()
 
-def summarize_pdf(pdf_path, pages_to_summarize):
-    pdf_reader = PdfReader(pdf_path)
-    summarized_text = ''
+import requests
 
-    # Load the BART model and tokenizer
-    model_name = 'facebook/bart-large-cnn'
-    tokenizer = BartTokenizer.from_pretrained(model_name)
-    model = BartForConditionalGeneration.from_pretrained(model_name)
+def summarize_pdf_api(data, max_length, api_url, api_token):
+    headers = {"Authorization": f"Bearer {api_token}"}
 
-    for page_num in pages_to_summarize.split(','):
-        try:
-            page_num = int(page_num.strip())
-            if 1 <= page_num <= len(pdf_reader.pages):
-                page_text = pdf_reader.pages[page_num - 1].extract_text()
+    # Make API call for summarization
+    payload = {
+        "inputs": data,
+        "parameters": {"min_length": max_length // 4, "max_length": max_length},
+    }
+    response = requests.post(api_url, headers=headers, json=payload)
+    result = response.json()
 
-                # Tokenize and generate abstractive summary
-                inputs = tokenizer(page_text, return_tensors="pt", max_length=1024, truncation=True)
-                summary_ids = model.generate(inputs['input_ids'], max_length=500, num_beams=4, length_penalty=5.0,
-                                             early_stopping=True)
-                summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+    return result["summary_text"]
 
-                summarized_text += summary + '\n\n'
-        except ValueError:
-            pass
 
-    return summarized_text.strip()
+

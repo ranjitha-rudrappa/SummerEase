@@ -1,0 +1,33 @@
+<!-- summary.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Summarizer - Summary</title>
+    <style>
+        body {
+            max-width: 800px; /* Adjust the max-width based on your preference */
+            margin: auto;
+        }
+        pre {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+<h2>PDF Summarization Results</h2>
+
+{% if pdf_document %}
+    <p><strong>PDF File:</strong> {{ pdf_document.pdf_file.name }}</p>
+    <p><strong>Pages Summarized:</strong> {{ pdf_document.pages_to_summarize }}</p>
+    <p><strong>Summarized Text:</strong></p>
+    <pre>{{ pdf_document.summarized_text }}</pre>
+{% else %}
+    <p>No summarization results available.</p>
+{% endif %}
+
+</body>
+</html>
+

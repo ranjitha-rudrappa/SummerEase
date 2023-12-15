@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<!-- templates/activity_history.html -->
+<h2>Activity History</h2>
+<ul>
+    {% for activity in activities %}
+        <li>{{ activity.activity_type }} - {{ activity.created_at }}</li>
+    {% endfor %}
+</ul>

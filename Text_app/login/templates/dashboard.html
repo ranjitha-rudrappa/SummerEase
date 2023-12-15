@@ -37,6 +37,10 @@
     </style>
 </head>
 <body>
+<div class="button-container">
+    <a href="{% url 'logout' %}"><button>Logout</button></a>
+</div>
+
     <h2>Welcome to SummEase</h2>
 
     <p class="welcome-note">
@@ -44,18 +48,19 @@
     </p>
 
     <div class="button-container">
-        <button class="action-button" onclick="redirectToInputText()">Input Text</button>
-        <button class="action-button" onclick="redirectToPdfSummary()">PDF to Summary</button>
+<!--        <button class="action-button" onclick="redirectToInputText()">Input Text</button>-->
+<!--        <button class="action-button" onclick="redirectToPdfSummary()">PDF to Summary</button>-->
+        <a href="{% url 'summarize' %}"><button class="action-button">PDF to Summary</button></a>
+        <a href="{% url 'index' %}"><button class="action-button">Input Text</button></a>
+<!--        <a href="{% url 'logout' %}"><button>Logout</button></a>-->
     </div>
 
-    <script>
-        function redirectToInputText() {
-            alert("Display Input Text");
-        }
+<!--    <script>-->
+<!--        function redirectToInputText() {-->
+<!--            alert("Display Input Text");-->
+<!--        }-->
 
-        function redirectToPdfSummary() {
-            alert("Display pdf Text");
-        }
-    </script>
+
+<!--    </script>-->
 </body>
 </html>

@@ -1,10 +1,15 @@
+<!-- summarizer_app/templates/summarizer_app/home.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <title>Text Summarizer</title>
 </head>
 <body>
-$END$
+    <h2>Enter Text to Summarize</h2>
+    <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+        <textarea name="input_text" rows="10" cols="50"></textarea><br>
+        <input type="submit" value="Summarize">
+    </form>
 </body>
 </html>

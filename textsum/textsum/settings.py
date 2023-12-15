@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mainapp.apps.MainappConfig',
-    'login'
+    'pdf',
+    'grammer_check'
 ]
 
 MIDDLEWARE = [
@@ -79,6 +80,7 @@ WSGI_APPLICATION = 'textsum.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
+        'ENFORCE_SCHEMA': True,
         'NAME': 'test',
     }
 }

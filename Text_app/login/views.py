@@ -1,11 +1,13 @@
 # myapp/views.py
-
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password, check_password
 from django.utils.crypto import get_random_string
 
 from .models import User
 from django.contrib.auth import get_user_model
+
+from django.conf import settings
 
 User = get_user_model()
 
@@ -22,7 +24,6 @@ def signup(request):
             error_message = "Username, password, and confirm password are required."
             return render(request, 'signup.html', {'error_message': error_message})
 
-        # Add password constraints (modify as needed)
         if len(password) < 8:
             error_message = "Password must be at least 8 characters long."
             return render(request, 'signup.html', {'error_message': error_message})
@@ -49,14 +50,17 @@ def login(request):
 
         user = User.objects.filter(username=username).first()
         if user and check_password(password, user.password):
-            # Set user as logged in (you might want to use Django's authentication system)
-            # Redirect to the home page after successful login
+            # Set user as logged in
             return redirect('dashboard')
         else:
             error_message = "Invalid username or password."
             return render(request, 'login.html', {'error_message': error_message})
 
     return render(request, 'login.html')
+
+
+def logout(request):
+    return render(request, 'home.html')
 
 
 def home(request):
@@ -79,7 +83,8 @@ def forgot_password(request):
             user.save()
 
             # Send the password reset email with the token
-            reset_link = f"http://yourwebsite.com/reset_password/{token}/"
+            reset_link = f"http://127.0.0.1:8000/SummarEase/reset_password/{token}/"
+
             send_mail(
                 'Reset Password',
                 f'Click the following link to reset your password: {reset_link}',

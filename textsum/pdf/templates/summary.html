@@ -1,24 +1,24 @@
-<!-- pdf_summarizer/templates/pdf_summarizer/summary.html -->
+<!-- summary.html -->
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Summary</title>
+    <title>PDF Summarizer - Summary</title>
 </head>
-
 <body>
 
-    <h2>PDF Summary</h2>
+  <h2>PDF Summarization Results</h2>
 
-    <p>PDF File: {{ pdf_document.pdf_file.name }}</p>
-    <p>Pages to Summarize: {{ pdf_document.pages_to_summarize }}</p>
-
-    <h3>Summarized Text</h3>
-    <p>{{ pdf_document.summarized_text|safe }}</p>
+  {% if pdf_document %}
+    <p><strong>PDF File:</strong> {{ pdf_document.pdf_file.name }}</p>
+    <p><strong>Pages Summarized:</strong> {{ pdf_document.pages_to_summarize }}</p>
+    <p><strong>Summarized Text:</strong></p>
+    <pre>{{ pdf_document.summarized_text }}</pre>
+  {% else %}
+    <p>No summarization results available.</p>
+  {% endif %}
 
 </body>
-
 </html>
