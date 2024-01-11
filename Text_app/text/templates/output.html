@@ -1,17 +1,89 @@
 
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--    <style>-->
+<!--    -->
+<!--    </style>-->
+<!--<head>-->
+<!--    <title>Output Page</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--    <h1>{{ result }}</h1>-->
+<!--    <a href='{% url "texttospeech" %}'>Text to Speech</a>-->
+
+<!--    <a href="{% url 'translate_summary' %}">Translate</a>-->
+<!--</body>-->
+<!--</html>-->
+
+<!-- output_page.html -->
+
 <!DOCTYPE html>
-<html>
-    <style>
-    
-    </style>
+<html lang="en">
 <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Output Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .textbox {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 20px 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .symbol {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+
+        .action-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .action-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>{{ result }}</h1>
-    <a href='{% url "texttospeech" %}'>Text to Speech</a>
 
-    <a href="{% url 'translate_summary' %}">Translate</a>
+    <div class="textbox">
+        {{ result }}
+    </div>
+
+    <div>
+        <span class="symbol">&#128266;</span> <!-- Microphone symbol -->
+        <a href='{% url "texttospeech" %}' class="action-button">Text to Speech</a>
+
+    </div>
+
+    <div>
+        <a href="{% url 'translate_summary' %}" class="action-button">Translate</a>
+    </div>
+
 </body>
 </html>

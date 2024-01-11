@@ -38,7 +38,7 @@ def signup(request):
             username=username,
             password=hashed_password
         )
-        return redirect('home')
+        return redirect('login')
 
     return render(request, 'signup.html')
 

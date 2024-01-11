@@ -1,0 +1,24 @@
+<!-- result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar Check Result</title>
+</head>
+<body>
+    <h2>Grammar Check Result</h2>
+    <p>Input Text:</p>
+    <p>{{ input_text }}</p>
+
+    <p>Corrected Text:</p>
+    <p>{{ corrected_text }}</p>
+
+    <p>Grammar Matches:</p>
+    <ul>
+        {% for match in matches %}
+            <li>{{ match.ruleIssueType }}: {{ match.message }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

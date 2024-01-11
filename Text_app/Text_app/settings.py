@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'login',
     'pdf_to_summary',
-    'text'
+    'text',
+    'grammar_correct'
 ]
 
 MIDDLEWARE = [
@@ -77,9 +78,12 @@ WSGI_APPLICATION = 'Text_app.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME':'app',
+    # 'default': {
+    #     'ENGINE': 'djongo',
+    #     'NAME':'app',
+      'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': BASE_DIR / "db.sqlite3",
     }
 }
 
