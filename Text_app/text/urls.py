@@ -7,7 +7,7 @@ from .views import translate_summary
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index', views.index,name='index'),
+    path('index/', views.index,name='index'),
     path('output', views.output,name='output'),
     path('texttospeech',views.texttospeech,name='texttospeech'),
     path('translate-summary/', translate_summary, name='translate_summary'),

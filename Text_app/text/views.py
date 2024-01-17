@@ -60,8 +60,20 @@ def output(request):
     request.session['text_for_speech'] = text
     request.session['summarized_text'] = text
 
-    return render(request, 'output.html', {"result": output["summary_text"]})
+    return render(request, 'index.html', {"result": output["summary_text"],"input" : data})
 
+
+# def texttospeech(request):
+#     rate = 150
+#     engine = pyttsx3.init()
+#     engine.setProperty('rate', rate)
+#     text = request.session.get('text_for_speech', '')
+#     # Use the engine to speak the given text audio
+#     engine.say(text)
+#     # Wait for the speech to finish
+#     engine.runAndWait()
+#     return render(request, 'index.html', {"result": text})
+from django.http import JsonResponse
 
 def texttospeech(request):
     rate = 150
@@ -72,7 +84,8 @@ def texttospeech(request):
     engine.say(text)
     # Wait for the speech to finish
     engine.runAndWait()
-    return render(request, 'output.html', {"result": text})
+    return render(request, 'index.html', {"result": text})
+
 
 
 
@@ -84,19 +97,39 @@ def language_translator(text, target_language='en'):
     translation = translator.translate(text, dest=target_language, src='en')
     return translation.text
 
-def translate_summary(request, target_language='hi'):
+# def translate_summary(request, target_language='hi'):
+#     # Ensure 'summarized_text' is present in the session
+#     summarized_text = request.session.get('summarized_text', '')
+#
+#     if summarized_text:
+#         # If summarized_text is not None, proceed with translation
+#         translated_text = language_translator(summarized_text, target_language)
+#
+#         # Set the translated text to a new session key
+#         request.session['translated_text'] = translated_text
+#
+#         return render(request, 'index.html', {"result": translated_text})
+#     else:
+#         # If 'summarized_text' is not present, handle accordingly
+#         return render(request, 'index.html', {"result": "Summarized text not found in session"})
+
+def translate_summary(request):
     # Ensure 'summarized_text' is present in the session
     summarized_text = request.session.get('summarized_text', '')
 
     if summarized_text:
+        # Get the target language from the request parameters or use 'hi' as default
+        target_language = request.GET.get('target_language', 'hi')
+
         # If summarized_text is not None, proceed with translation
         translated_text = language_translator(summarized_text, target_language)
 
         # Set the translated text to a new session key
         request.session['translated_text'] = translated_text
 
-        return render(request, 'output1.html', {"result": translated_text})
+        return render(request, 'index.html', {"result": translated_text})
     else:
         # If 'summarized_text' is not present, handle accordingly
-        return render(request, 'output1.html', {"result": "Summarized text not found in session"})
+        return render(request, 'index.html', {"result": "Summarized text not found in session"})
+
 

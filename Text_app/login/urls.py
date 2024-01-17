@@ -10,6 +10,5 @@ urlpatterns = [
     path('reset_password/<str:token>/', reset_password, name='reset_password'),
     path('reset_password_confirm/',reset_password_confirm,name='reset_password_confirm'),
     path('logout/',logout, name='logout')
-
     # Add other URLs as needed
 ]
