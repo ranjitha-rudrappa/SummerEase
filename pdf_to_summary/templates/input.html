@@ -49,6 +49,36 @@
         ul li:hover a{
             padding-left:9px ;
         }
+        .translate-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .translate-button {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .language-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #f9f9f9;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      z-index: 1;
+    }
+
+    .language-item {
+      padding: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .language-item:hover {
+      background-color: #e5e5e5;
+    }
     </style>
 </head>
 <body style="background-color:lightgray;">
@@ -97,6 +127,19 @@
         <input type="submit" value="Translate">
     </form>
 </div>
+<!--                        <div class="translate-container">-->
+<!--                            <form id="language-form" action="{% url 'translate_summary1' %}" method="get">-->
+<!--<div class="translate-button" id="target-language" name="target_language" onmouseover="showLanguages()" onmouseout="hideLanguages()">-->
+<!--    -->
+<!--</div>-->
+<!--<div class="language-dropdown" onmouseover="showLanguages()" onmouseout="hideLanguages()">-->
+<!--<div class="language-item" type="submit" onclick="changeLanguage('en')">English</div>-->
+<!--<div class="language-item" type="submit" onclick="changeLanguage('es')">Spanish</div>-->
+<!--<div class="language-item" type="submit" onclick="changeLanguage('fr')">French</div>-->
+<!--&lt;!&ndash; Add more languages as needed &ndash;&gt;-->
+<!--</div>-->
+<!--                            </form>-->
+<!--</div>-->
 <script>
     function toggleLanguageMenu() {
         var languageMenu = document.getElementById('language-menu');
@@ -152,6 +195,20 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
     <script>
+
+    function showLanguages() {
+    document.querySelector('.language-dropdown').style.display = 'block';
+  }
+
+  function hideLanguages() {
+    document.querySelector('.language-dropdown').style.display = 'none';
+  }
+
+  function changeLanguage(lang) {
+    // Implement your translation logic here
+    console.log('Selected language:', lang);
+    // You can replace the console.log with actual translation code
+  }
         function submitForm() {
             var form = document.getElementById('pdfForm');
             var formData = new FormData(form);

@@ -1,110 +1,3 @@
-<!-- myapp/templates/index.html -->
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Summarizer</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <form method="post" action="output">-->
-<!--        {% csrf_token %}-->
-<!--        <label for="data">Input Data:</label>-->
-<!--        <textarea name="data" rows="4" cols="50"></textarea><br>-->
-<!--        <label for="maxL">Max Length:</label>-->
-<!--        <input type="number" name="maxL" value="300"><br>-->
-<!--        <input type="submit" value="Summarize">-->
-<!--    </form>-->
-
-<!--    {% if result %}-->
-<!--        <h3>Summary:</h3>-->
-<!--        <p>{{ result }}</p>-->
-<!--    {% endif %}-->
-<!--</body>-->
-<!--</html>-->
-
-<!--{% load static %}-->
-
-
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Text Summarizer</title>-->
-<!--    &lt;!&ndash; Add Font Awesome link (make sure to include this in your project) &ndash;&gt;-->
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">-->
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>-->
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
-<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-
-<!--    <link rel="stylesheet" href="{% static 'summarease.css' %}">-->
-
-<!--</head>-->
-
-<!--<body>-->
-<!--    <div id="leftPane" class="sidebar" onclick="toggleLeftPane()">-->
-<!--        <header><h3>SummarEase</h3></header>-->
-<!--        <ul>-->
-<!--            <li><a href="{% url 'index' %}"><i class="fas fa-file-alt icon" style="color: rgb(0, 138, 119);"></i> Text Summarizer</a></li>-->
-<!--            <li><a href="{% url 'summarize' %}"><i class="fas fa-file-pdf icon" style="color: blue;"></i> PdfSummarizer</a></li>-->
-
-<!--            <li><a href="{% url 'home' %}" ><i class="fas fa-sign-out-alt icon" style="color: red;"></i> Logout</a></li>-->
-<!--        </ul>-->
-<!--    </div>-->
-<!--    <div id="mainButton" onclick="toggleLeftPane()">Main Button</div>-->
-<!--    <div id="mainContent">-->
-<!--        <div class="top">-->
-<!--            <div class="linesContainer">-->
-<!--                <div>-->
-<!--                    <div id="control-panel">-->
-<!--                        &lt;!&ndash; Clickable icons using Font Awesome &ndash;&gt;-->
-<!--                        <h3 style="color: rgb(8, 113, 113);"> <b>Text Summarizer </b></h3>-->
-<!--                                <label for="maxL">Max Length:</label>-->
-<!--                                <input type="number" name="maxL" value="300"><br>-->
-<!--&lt;!&ndash;                        <p style="margin-left: 30px;"> Short</p>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <input type="range" min="0" max="100" value="50" id="line-length-slider">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <p>Long</p>&ndash;&gt;-->
-<!--                        <i class="fas fa-microphone " id="microphonebutton"> </i>-->
-<!--                        <i class="fas fa-language" for="targetlanguage"  id="translatebutton"></i>-->
-<!--                        <select name="target_language" id="target_language">-->
-<!--                            <option value="en">English</option>-->
-<!--                            <option value="es">Spanish</option>-->
-<!--                            <option value="fr">French</option>-->
-<!--                            &lt;!&ndash; Add more language options as needed &ndash;&gt;-->
-<!--                        </select>-->
-<!--                        <button id="deletebutton" title="Delete" onclick="deleteOutput()" ><i class="fas fa-trash-alt larger-icon"></i></button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="main">-->
-<!--            <form id="summarizeForm" action="output">-->
-<!--                {% csrf_token %}-->
-<!--                <div class="left">-->
-<!--                    <textarea ondragstart="return false;" for="data" id="inputText" type="text" name="user_input" rows="4" cols="30" required></textarea>-->
-<!--                    <button id="button">Summarize</button>-->
-<!--                </div>-->
-<!--            </form>-->
-<!--            <div class="right">-->
-<!--                {% if result %}-->
-<!--                <div id="output">-->
-<!--                    {{ result }}-->
-<!--                </div>-->
-<!--                {% endif %}-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>-->
-<!--    <script>-->
-<!--        // Add your JavaScript logic here-->
-<!--    </script>-->
-<!--</body>-->
-<!--</html>-->
-
-
-
-
 
 {% load static %}
 <!DOCTYPE html>
@@ -120,11 +13,20 @@
     <script src="{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="{% static 'summarease.css' %}">
+   <style>
+    .top{
+      flex: 1; /* Takes up 1/3 of the available space */
+    background-color: #f4f7f8;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0px 1px 4px 1px rgba(26, 25, 25, 0.160);
+    }
+   </style>
 </head>
-<body style="background-color:lightgray;">
+<body style="background-color:#cfdcf5;">
     <div id="leftPane" class="sidebar" onclick="toggleLeftPane()">
 
-        <header><h3  style=" font-style: italic; font-size: 25px">SummarEase</h3></header>
+        <header><h3  style="color: green; font-style: italic; font-size: 25px">SummarEase</h3></header>
         <ul>
         <li ><a href="{% url 'index' %}"><i class="fas fa-file-alt icon"style="color: rgb(0, 138, 119);"></i> Text Summarizer</a></li>
 
@@ -138,24 +40,24 @@
 </div>
     <!-- <div id="mainButton" onclick="toggleLeftPane()">Main Button</div> -->
 
-    <div id="mainContent" style="background-color:rgb(8, 113, 113);">
+    <div id="mainContent" style="background-color: white;">
 
-<p style="color: white; font-size: 25px; font-family: 'Arial', 'Helvetica', sans-serif; text-align: center;">Write like a pro, everywhere you write.</p>
-        <div class="top">
+<p style="color: green; font-size: 25px; font-family: 'Arial', 'Helvetica', sans-serif; text-align: center;">Write like a pro, everywhere you write.</p>
+        <div class="top" style="background-color: green;">
             <div class="linesContainer">
                 <div >
 
                     <div id="control-panel">
                         <!-- Clickable icons using Font Awesome -->
-                        <h3 style="color: rgb(8, 113, 113); font-size:22px; text-align:center"> <b>Text Summarizer </b></h3>
+                        <h3 style="color: white; font-size:22px; text-align:center; position:fixed;"> <b>Text Summarizer </b></h3>
                         <!-- <p style="margin-left: 30px;"> Short</p>
                         <input type="range" min="0" max="100" value="50" id="line-length-slider">
                         <p>Long</p> -->
                         <div id="but" style="display:flex; margin-left: 32%;margin-right: -32%;margin-top:1%;">
 
-                 <a href='{% url "texttospeech" %}'><i class="fas fa-microphone larger-icon" id="microphonebutton"></i></a>
-                       <a href="#" id="translatebutton" onclick="toggleLanguageMenu()">
-                      <i class="fas fa-language larger-icon"></i></a>
+                 <a href='{% url "texttospeech" %}'><i class="fas fa-microphone larger-icon" id="microphonebutton" style="border: 1px solid green; background-color: green; color: white;"></i></a>
+                       <a href="#" id="translatebutton" style="border: 1px solid green; background-color: green; color: white;" onclick="toggleLanguageMenu()">
+                      <i class="fas fa-language larger-icon" ></i></a>
 <div id="language-menu" style="display: none;">
     <form id="language-form" action="{% url 'translate_summary' %}" method="get">
         <select id="target-language" name="target_language" class="language-dropdown" >
@@ -171,7 +73,7 @@
     </form>
 </div>
 
-                        <button id="deletebutton" title="Delete" onclick="deleteOutput()" ><i class="fas fa-trash-alt larger-icon"></i></button>
+                        <button id="deletebutton" title="Delete" onclick="deleteOutput()" style="margin-left:10%; border: 1px solid green; background-color: green; color:white"><i class="fas fa-trash-alt larger-icon"></i></button>
                         </div>
                         <!-- Slider with 2 mid points -->
                     </div>
@@ -182,15 +84,16 @@
             <div class="main" >
                 <form id='summarizeForm' action="{% url 'output' %}" method="post">
                     {% csrf_token %}
-                    <label for="maxL" style="color:white;">Length:</label>
-                    <input type="string" name="maxL" value="{{ maxL }}">
-                    <div class="left" style="background-color:rgb(8, 113, 113);">
-                        <textarea   ondragstart="return false;" id="inputText" name='data' type="text" rows="4" cols="30" required style=" font-size: 15px; font-family: 'Arial', 'Helvetica', sans-serif; width:90%;" >{{ input }}</textarea>
-                        <button id="button" onclick="processText()">Summarize</button>
+
+                    <div class="left" style="background-color:white; width: 128%; margin-bottom: -10%">
+                        <textarea  placeholder="Enter text for summarization" ondragstart="return false;" id="inputText" name='data' type="text" rows="4" cols="30" required style=" font-size: 15px; font-family: 'Arial', 'Helvetica', sans-serif; width:90%;" >{{ input }}</textarea>
+                        <label for="maxL" style="color:black; margin-top:30px; float:left">Length:<input type="string" name="maxL" value="{{ maxL }}"></label>
+
+                        <button id="button" onclick="processText()" style="color: white; margin-top: 20px; background-color:green; border-radius: 20px;  margin-left:30px; text-align: center;"><b>Summarize</b></button>
                     </div>
                 </form>
 
-                <div class="right">
+                <div class="right" style="margin-top: 2.0%; margin-bottom: 6.95%; margin-left: 100px;">
                     {% if result %}
                      <p id="output">{{ result }}</p>
                      {% endif %}
