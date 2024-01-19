@@ -1,0 +1,465 @@
+<!-- myapp/templates/home.html -->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Welcome to My App</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h2>Welcome to My App</h2>-->
+<!--    <p>Choose an option:</p>-->
+<!--    <ul>-->
+<!--        <li><a href="{% url 'signup' %}">Signup</a></li>-->
+<!--        <li><a href="{% url 'login' %}">Login</a></li>-->
+<!--    </ul>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Welcome to SummarEase</title>-->
+<!--    <style>-->
+<!--        html, body {-->
+<!--            height: 100%;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--        }-->
+
+<!--        body {-->
+<!--            background: linear-gradient(to bottom, #3498db, #2c3e50);-->
+<!--            color: #fff;-->
+<!--            font-family: 'Arial', sans-serif;-->
+<!--            text-align: center;-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            min-height: 100vh;-->
+<!--        }-->
+
+<!--        h2 {-->
+<!--            font-size: 2em;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+
+<!--        ul {-->
+<!--            list-style: none;-->
+<!--            padding: 0;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--        }-->
+
+<!--        li {-->
+<!--            margin: 0 10px; /* Add margin between the list items */-->
+<!--        }-->
+
+<!--        a {-->
+<!--            display: inline-block;-->
+<!--            padding: 10px 20px;-->
+<!--            text-decoration: none;-->
+<!--            background-color: #2ecc71;-->
+<!--            color: #fff;-->
+<!--            border-radius: 5px;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--     <h2> <span style="font-style: italic;">Welcome to SummarEase</span></h2>-->
+<!--    <ul>-->
+<!--        <li><a href="{% url 'signup' %}">Signup</a></li>-->
+<!--        <li><a href="{% url 'login' %}">Login</a></li>-->
+<!--    </ul>-->
+<!--</body>-->
+<!--</html>-->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com -->
+  <title>SummarEase</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet"  href ="{% static 'home.css' %}">
+<style>
+  body {
+  font: 400 15px Lato, sans-serif;
+  line-height: 1.8;
+  color: #818181;
+  scroll-behavior: smooth;
+  /* position: fixed; */
+  /* right: 10px;
+  bottom: 10px; */
+
+}
+
+h2 {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #303030;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+h4 {
+  font-size: 19px;
+  line-height: 1.375em;
+  color: #303030;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.jumbotron {
+  background-image: linear-gradient(to top right, rgba(21, 187, 173), rgba(6, 123, 119, 0.511));
+  color: #fff;
+  padding: 130px ; /* Adjusted padding for smaller screens */
+  font-family: Montserrat, sans-serif;
+  /* border-radius: 10px; */
+  /* box-shadow: 0 8px 20px rgba(5, 72, 62, 0.8) */
+}
+
+.container-fluid {
+  padding: 60px 20px; /* Adjusted padding for smaller screens */
+}
+
+.bg-grey {
+  background-color: #f6f6f6;
+}
+
+.logo-small {
+  color: #34bed0;
+  font-size: 30px; /* Adjusted font size for smaller screens */
+}
+
+.logo {
+  color: #1ef4f473;
+  font-size: 100px; /* Adjusted font size for smaller screens */
+}
+
+.thumbnail {
+  padding-left: 0px;
+  border: none;
+  border-radius: 0;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: auto; /* Ensures images maintain aspect ratio on smaller screens */
+  margin-bottom: 10px;
+}
+
+.navbar {
+  background-color: #fdffff;
+  font-size: 14px !important;
+  line-height: 1.42857146 !important;
+  letter-spacing: 0px;
+  font-family: Montserrat, sans-serif;
+
+  /* border-radius: 10px; */
+  /* box-shadow: 0 0px 10px#06615b; */
+}
+
+.navbar-nav li a:hover,
+.navbar-nav li.active a {
+  color: #000000 !important;
+  /* background-color: #d2dee0 !important;  */
+}
+
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+  color: #0b9496 !important;
+}
+
+footer .glyphicon {
+  font-size: 20px;
+  margin-bottom: 2px;
+  color: #09798a;
+}
+
+.slideanim {visibility:hidden;}
+
+.slide {
+  animation-name: slide;
+  -webkit-animation-name: slide;
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  visibility: visible;
+}
+
+
+@keyframes slide {
+  0% {
+      opacity: 0;
+      transform: translateY(70%);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0%);
+  }
+}
+
+@-webkit-keyframes slide {
+  0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+  }
+  100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+  }
+}
+.abt{
+  padding: 2% 20%;
+  text-align: justify;
+
+}
+#feature{
+  align-items: center;
+  margin-left: 10%;
+}
+@media screen and (max-width: 768px) {
+  .jumbotron {
+      padding: 100px 20px; /* Adjusted padding for smaller screens */
+  }
+
+  .navbar-nav li a,
+  .navbar .navbar-brand {
+      color: black;
+  }
+
+  .navbar-toggle {
+      /* color: #000000 !important; */
+
+  }
+
+  .navbar-nav li a:hover,
+  .navbar-nav li.active a {
+      background-color: transparent!important;
+  }
+
+  .thumbnail img {
+      height: auto;
+  }
+
+  .logo {
+      font-size: 70px; /* Adjusted font size for smaller screens */
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .jumbotron {
+      padding: 80px 20px; /* Adjusted padding for smaller screens */
+  }
+
+  .logo {
+      font-size: 50px; /* Adjusted font size for smaller screens */
+  }
+  #feature{
+    margin-left: 0px;
+  }
+
+}
+cd
+</style>
+</head>
+<body id="myPage"  data-target=".navbar" data-offset="60">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- <a class="navbar-brand" href="#myPage">SummarEase</a> -->
+    </div>
+    <!-- <form action="login" method="post"> -->
+    <div class="collapse navbar-collapse" id="myNavbar" >
+      <ul class="nav navbar-nav navbar-right" >
+        <li><a href="#about" style="color:black;font-size:15px;"><b>ABOUT</b></a></li>
+        <li><a href="#features"style="color:black;font-size:15px;"><b>FEATURES</b></a></li>
+        <li><a href="#users"style="color:black;font-size:15px;"><b>USERS</b></a></li>
+        <!-- <li><a href="#pricing">PRICING</a></li> -->
+        <li><a href="#contact"style="color:black;font-size:15px;"><b>CONTACT</b></a></li>
+        <li><a href="{% url 'login' %}"style="color:black;font-size:15px;"><b>LOGIN</b></a></li>
+      </ul>
+    </div>
+  <!-- </form> -->
+  </div>
+</nav>
+
+<div class="jumbotron text-center">
+  <h1>SummarEase</h1>
+  <p>Your Ultimate Text Summarization Solution</p>
+  <p></p>
+
+</div>
+
+<!-- Container (About Section) -->
+<div id="about" class="abt">
+
+    <div >
+      <h2 style="text-align: center;">About SummarEase</h2>
+      <p>Unlock the power of efficient information processing with Summarease – the cutting-edge text summarization platform designed to transform the way you consume content. Whether you're a busy professional, a student, or someone seeking quick insights, Summarease simplifies complex information, providing you with concise and relevant summaries in seconds.</p>
+
+    </div>
+
+</div>
+
+
+
+<!-- Container (Services Section) -->
+
+<div id="features" style="text-align: center;">
+  <br>
+  <h2>FEATURES</h2>
+  <br>
+  <div id="feature">
+  <div class="row slideanim">
+    <div class="col-sm-2">
+      <span class="glyphicon glyphicon-book logo-small"></span>
+      <h4>Text Summarization</h4>
+      <!-- <p>Lorem ipsum dolor sit amet..</p> -->
+    </div>
+    <div class="col-sm-2">
+      <span class="glyphicon glyphicon-list-alt logo-small"></span>
+      <h4>Grammar Checking</h4>
+      <!-- <p>Lorem ipsum dolor sit amet..</p> -->
+    </div>
+    <div class="col-sm-2">
+      <span class="glyphicon glyphicon-folder-open logo-small"></span>
+      <h4>PDF Summarization</h4>
+      <!-- <p>Lorem ipsum dolor sit amet..</p> -->
+    </div>
+
+  <!-- <div > -->
+  <!-- <div > -->
+    <div class="col-sm-2">
+      <span class="glyphicon glyphicon-transfer logo-small"></span>
+      <h4>Language Translator</h4>
+      <!-- <p>Lorem ipsum dolor sit amet..</p> -->
+    </div>
+    <div class="col-sm-2">
+      <span class="glyphicon glyphicon-volume-up logo-small"></span>
+      <h4>Text-to-Speech</h4>
+      <!-- <p>Lorem ipsum dolor sit amet..</p> -->
+    </div>
+    <div class="col-sm-2">
+      <!-- <span class="glyphicon glyphicon-wrench logo-small"></span> -->
+      <!-- <h4 style="color:#303030;">History Tracking</h4> -->
+      <!-- <p>Lorem ipsum dolor sit amet..</p> -->
+    </div>
+  <!-- </div> -->
+  </div>
+  </div>
+  <!-- </div> -->
+</div>
+
+<!-- Container (Portfolio Section) -->
+<div id="users" class="container-fluid text-center " id="contact">
+  <h2>Who Can access?</h2>
+    <div style="text-align:center">
+      <!-- <div class="thumbnail" > -->
+        <!-- <img src="newyork.jpg" alt="New York" width="400" height="300"> -->
+        <p><strong>Anyone with internet access</strong></p>
+        <p>This is for anyone who just needs to get the gist of a long article.
+          </p><p>You can read this summary, then go read the original article if you want to.</p>
+      </div>
+    <!-- </div> -->
+  </div>
+
+
+<!-- Container (Contact Section) -->
+<div id="contact">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+
+      <div class="text-center">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <!-- <p class="glyphicon glyphicon-map-marker"> </p>
+      <br>
+      <p class="glyphicon glyphicon-phone"> +00 1515151515</p> -->
+      <!-- <br> -->
+      <p class="glyphicon glyphicon-envelope"> summarease@gmail.com</p>
+      </div>
+
+
+  </div>
+</div>
+
+<!-- Image of location/map -->
+
+
+<footer class="container-fluid text-center" style="position: fixed; bottom: 1px;right: 2px;">
+  <a href="#myPage" title="To Top" >
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>Scroll to top</p>
+</footer>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+
+
+
+        $(document).ready(function () {
+            // Smooth scroll when clicking on internal links
+            $('a[href^="#"]').on('click', function (event) {
+                var target = $($(this).attr('href'));
+
+                if (target.length) {
+                    event.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000); // Adjust the duration as needed
+                }
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+</body>
+</html>

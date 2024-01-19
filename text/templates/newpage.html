@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Page</title>
+</head>
+<body>
+    <h1>This is the New Page!</h1>
+    <!-- Add your content here -->
+    <p>Summary Text: {{ result }}</p>
+    <form method="post" action="{% url 'translate_page' %}">
+        {% csrf_token %}
+        <label for="target_language">Select Target Language:</label>
+        <select name="target_language" id="target_language">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <!-- Add more language options as needed -->
+        </select>
+        <br>
+        <input type="submit" value="Translate">
+    </form>
+</body>
+</html>

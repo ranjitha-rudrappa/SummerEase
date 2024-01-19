@@ -1,0 +1,197 @@
+<!--&lt;!&ndash; myapp/templates/login.html &ndash;&gt;-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Login</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h2>Login</h2>-->
+<!--    {% if error_message %}-->
+<!--        <p style="color: red;">{{ error_message }}</p>-->
+<!--    {% endif %}-->
+<!--    <form method="post" action="{% url 'login' %}">-->
+<!--        {% csrf_token %}-->
+<!--        <label for="username">Username:</label>-->
+<!--        <input type="text" name="username" required><br>-->
+<!--        <label for="password">Password:</label>-->
+<!--        <input type="password" name="password" required><br>-->
+<!--        <button type="submit">Login</button>-->
+<!--    </form>-->
+<!--      <ul>-->
+<!--         <li><a href="{% url 'forgot_password' %}">Forgot Password</a></li>-->
+<!--            </ul>-->
+<!--</body>-->
+<!--</html>-->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500&family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <title>Login Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Mukta', sans-serif;
+        }
+
+        .center-box {
+            width: 800px;
+            /* You can adjust the width as needed */
+            height: 500px;
+            /* You can adjust the height as needed */
+            /* background-color: #f0f0f0; */
+            /* border: 1px solid #ccc; */
+            display: flex;
+            align-items: stretch;
+        }
+
+        .partition {
+            flex: 1;
+            border-right: 1px solid #ccc;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+
+        .login-form {
+            text-align: center;
+            max-width: 300px;
+            margin: auto;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .login-form input {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .login-form button {
+            background-color: #0f4711;
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .register-forgot {
+            margin-top: 20px;
+            color: #555;
+        }
+
+        .register-forgot a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .register-forgot a:hover {
+            text-decoration: underline;
+        }
+
+        .partition.image {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Remove the border for the last partition */
+        .partition:last-child {
+            border-right: none;
+        }
+
+        /* Add styles for the image in Partition 2 */
+        .partition.image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        input[type=text] {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #000000;
+        }
+
+        input[type=password] {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #000000;
+        }
+
+        @media screen and (max-width: 750px) {
+            .center-box {
+                flex-direction: column; /* Stack the partitions vertically */
+            }
+            .login-form {
+                margin-top: 0;
+                order:2; /* Remove the margin between the image and the form */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center-box">
+        <div class="partition">
+            <div class="login-form">
+                <h2>Login</h2>
+                <form method="post" action="{% url 'login' %}">
+                    <!-- {% csrf_token %} -->
+                    <label for="username">Username:</label>
+                    <input type="text" name="userName" id="userName">
+
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="pwd">
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+
+            <div class="register-forgot">
+                <p>Not a member? <a href="{% url 'signup' %}">Register</a></p>
+                <p><a href="{% url 'forgot_password' %}">Forgot Password?</a></p>
+            </div>
+        </div>
+        <div class="partition image">
+            <img src="{% static 'login.png' %}" alt="Image">
+        </div>
+    </div>
+</body>
+
+</html>

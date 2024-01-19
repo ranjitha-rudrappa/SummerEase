@@ -1,0 +1,421 @@
+<!-- myapp/templates/signup.html -->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Signup</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h2>Signup</h2>-->
+<!--    {% if error_message %}-->
+<!--        <p style="color: red;">{{ error_message }}</p>-->
+<!--    {% endif %}-->
+<!--    <form method="post" action="{% url 'signup' %}">-->
+<!--        {% csrf_token %}-->
+<!--        <label for="email">Email:</label>-->
+<!--        <input type="email" name="email" required><br>-->
+<!--        <label for="username">Username:</label>-->
+<!--        <input type="text" name="username" required><br>-->
+<!--        <label for="password">Password:</label>-->
+<!--        <input type="password" name="password" required><br>-->
+<!--        <label for="confirm_password">Confirm Password:</label>-->
+<!--        <input type="password" name="confirm_password" required><br>-->
+<!--        <button type="submit">Signup</button>-->
+<!--    </form>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+
+<!--<head>-->
+<!--    <style>-->
+<!--        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');-->
+
+<!--        body {-->
+<!--            background: #E1EBEC;-->
+<!--            font-family: 'Poppins', sans-serif;-->
+<!--        }-->
+
+<!--        .row {-->
+<!--            width: 900px;-->
+<!--            border: none;-->
+<!--            border-radius: 0;-->
+<!--            box-sizing: border-box;-->
+<!--        }-->
+
+<!--        .left {-->
+<!--            background: linear-gradient(to bottom, rgba(26, 111, 118, 1) 50%, rgba(40, 30, 101, 1) 100%, rgba(125, 185, 232, 1) 100%);-->
+<!--            height: 550px;-->
+<!--            padding: 0 35px;-->
+<!--        }-->
+
+<!--        .right {-->
+<!--            background: #fff;-->
+<!--            padding: 80px;-->
+<!--            height: 550px;-->
+<!--        }-->
+
+<!--        span.txt {-->
+<!--            color: #17C296;-->
+<!--        }-->
+
+<!--        .greeting {-->
+<!--            padding-top: 200px;-->
+<!--            padding-right: 90px;-->
+<!--        }-->
+
+<!--        h6.mt-3 {-->
+<!--            padding-right: 115px;-->
+<!--        }-->
+
+<!--        .footer {-->
+<!--            margin-top: 220px;-->
+<!--        }-->
+
+<!--        .footer span {-->
+<!--            color: #B0A1E2;-->
+<!--            font-size: 9px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        .fab {-->
+<!--            color: #EDEDF5;-->
+<!--            font-size: 10px;-->
+<!--            margin-right: 20px;-->
+<!--            padding-top: 3px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        h2.heading {-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        .form-control {-->
+<!--            border: none;-->
+<!--            border-radius: 0px;-->
+<!--            border-bottom: 1px solid #F2F2F2;-->
+<!--        }-->
+
+<!--        .form-control::placeholder {-->
+<!--            font-size: 13px;-->
+<!--            color: #C2C2CC;-->
+<!--        }-->
+
+<!--        .form-control:focus {-->
+<!--            box-shadow: none;-->
+<!--            border-bottom: 1px solid #F2F2F2;-->
+<!--        }-->
+
+<!--        .fone input {-->
+<!--            padding-left: 20px;-->
+<!--        }-->
+
+<!--        .fone {-->
+<!--            position: relative-->
+<!--        }-->
+
+<!--        .fone .fas {-->
+<!--            position: absolute;-->
+<!--            left: 0;-->
+<!--            top: 5px;-->
+<!--            padding: 8px 0px;-->
+<!--            color: #C2C2CC;-->
+<!--            font-size: 12px;-->
+<!--        }-->
+
+<!--        .fone .image {-->
+<!--            position: absolute;-->
+<!--            left: 275px;-->
+<!--            top: 0px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        .form-check-input {-->
+<!--            margin-top: 10px;-->
+<!--        }-->
+
+<!--        .form-check-label {-->
+<!--            font-size: 9px;-->
+<!--            color: #C2C2CC;-->
+<!--        }-->
+
+<!--        .btn-success {-->
+<!--            padding: 7px 40px;-->
+<!--            background: #11C892;-->
+<!--            border: none;-->
+<!--            border-radius: 30px;-->
+<!--            font-size: 9px;-->
+<!--        }-->
+
+<!--        .btn-success:hover {-->
+<!--            background: #11C892;-->
+<!--        }-->
+
+<!--        .btn-success:focus {-->
+<!--            box-shadow: none;-->
+<!--        }-->
+
+<!--        u {-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        p.exist {-->
+<!--            font-size: 9px;-->
+<!--            color: #C2C2CC;-->
+<!--        }-->
+
+<!--        p.exist span {-->
+<!--            cursor: pointer;-->
+<!--            color: #ABA5D3;-->
+<!--        }-->
+
+<!--        @static screen and (max-width: 993px) {-->
+<!--            .fone .image {-->
+<!--                position: absolute;-->
+<!--                left: 180px;-->
+<!--            }-->
+
+<!--            .footer {-->
+<!--                margin-top: 170px;-->
+<!--            }-->
+<!--        }-->
+
+<!--        @static screen and (max-width: 768px) {-->
+<!--            .row {-->
+<!--                width: 450px;-->
+<!--            }-->
+
+<!--            .rcol {-->
+<!--                padding: 60px 180px 60px 60px;-->
+<!--            }-->
+<!--        }-->
+
+<!--        @static screen and (max-width: 420px) {-->
+<!--            .rcol {-->
+<!--                padding: 60px 50px 60px 50px;-->
+<!--            }-->
+
+<!--            .footer {-->
+<!--                margin-top: 140px;-->
+<!--            }-->
+<!--        }-->
+<!--    </style>-->
+
+<!--</head>-->
+
+<!--<body>-->
+
+<!--            <div class="col-md-7 rcol">-->
+<!--                <form class="sign-up">-->
+<!--                    <h2 class="heading mb-4">Sign up</h2>-->
+<!--                    <div class="form-group fone mt-2">-->
+<!--                        <i class="fas fa-user"></i>-->
+<!--                        <input type="name" class="form-control" placeholder="Name">-->
+<!--                    </div>-->
+<!--                    <div class="form-group fone mt-2">-->
+<!--                        <i class="fas fa-envelope"></i>-->
+<!--                        <input type="email" class="form-control" placeholder="Email">-->
+<!--                    </div>-->
+<!--                    <div class="form-group fone mt-2">-->
+<!--                        <i class="fas fa-lock"></i>-->
+<!--                        <input type="password" class="form-control" placeholder="New Password">-->
+<!--                        <div class="image"><i class="fas fa-eye"></i></div>-->
+<!--                    </div>-->
+<!--                    <div class="form-group fone mt-2">-->
+<!--                        <i class="fas fa-lock"></i>-->
+<!--                        <input type="password" class="form-control" placeholder="Confirm Password">-->
+<!--                        <div class="image"><i class="fas fa-eye"></i></div>-->
+<!--                    </div>-->
+<!--                    <input type="checkbox" class="form-check-input ml-0" id="exampleCheck1">-->
+<!--                </form>-->
+
+<!--                <button type="button" class="btn btn-success mt-5">Sign Up</button>-->
+<!--                <p class="exist mt-4">Already have an account? <span>Log in</span></p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--</body>-->
+
+<!--</html>-->
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <title>Login Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .center-box {
+            width: 800px;
+            /* You can adjust the width as needed */
+            height: 500px;
+            /* You can adjust the height as needed */
+            /* background-color: #f0f0f0; */
+            /* border: 1px solid #ccc; */
+            display: flex;
+            align-items: stretch;
+        }
+
+        .partition {
+            flex: 1;
+            border-right: 1px solid #ccc;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            margin-top: -5%;
+
+        }
+
+
+        .login-form {
+            text-align: center;
+            max-width: 300px;
+            margin: auto;
+            background-color: #f9f9f9;
+            padding: 20px;
+            /* margin-bottom: 25%; */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .login-form input {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .login-form button {
+            background-color: #0f4711;
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .register-forgot {
+            margin-top: 20px;
+            color: #555;
+        }
+
+        .register-forgot a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .register-forgot a:hover {
+            text-decoration: underline;
+        }
+
+        .partition.image {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Remove the border for the last partition */
+        .partition:last-child {
+            border-right: none;
+        }
+
+        /* Add styles for the image in Partition 2 */
+        .partition.image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        input[type=text] {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #000000;
+        }
+
+        input[type=password] {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #000000;
+        }
+
+        input[type=email] {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center-box">
+        <div class="partition">
+            <div class="login-form">
+                <h2>Register</h2>
+                <form method="post" action="{% url 'signup' %}">
+                    <label for="username">Username:</label>
+                    <input type="text" name="userName" id="userName">
+                    <label for="emai"> Email</label>
+                    <input type="email" name="email" id="email">
+
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="pwd">
+
+                    <label for="password">Confirm Password:</label>
+                    <input type="password"name="confirm_password" id="confirm_password">
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+
+            <div class="register-forgot">
+                <p>Already a member? <a href="{% url 'login' %}">Login</a></p>
+            </div>
+        </div>
+        <div class="partition image">
+            <img src="{% static 'signup.png' %}" alt="Image">
+        </div>
+    </div>
+</body>
+
+</html>
+
