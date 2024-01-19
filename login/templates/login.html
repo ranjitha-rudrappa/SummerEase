@@ -173,9 +173,9 @@
             <div class="login-form">
                 <h2>Login</h2>
                 <form method="post" action="{% url 'login' %}">
-                    <!-- {% csrf_token %} -->
+                     {% csrf_token %}
                     <label for="username">Username:</label>
-                    <input type="text" name="userName" id="userName">
+                    <input type="text" name="username" id="userName">
 
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="pwd">
