@@ -42,8 +42,8 @@ def summarize(request):
         try:
             api_url = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
             api_token = "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"
-
-            pdf_document = PdfDocument(pdf_file=pdf_file, pages_to_summarize=pages_to_summarize)
+            user_id = request.session.get('user_id')
+            pdf_document = PdfDocument(user = user_id,pdf_file=pdf_file, pages_to_summarize=pages_to_summarize)
             pdf_document.save()
 
             pdf_path = pdf_document.pdf_file.path

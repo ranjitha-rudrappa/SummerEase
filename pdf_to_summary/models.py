@@ -6,6 +6,8 @@ class PdfDocument(models.Model):
     pdf_file = models.FileField(upload_to='pdfs/')
     pages_to_summarize = models.IntegerField()
     summarized_text = models.TextField(blank=True, null=True)
+    user1 = models.IntegerField(default=0)
+
 
     def __str__(self):
         return f"{self.pdf_file.name} - Pages: {self.pages_to_summarize}"

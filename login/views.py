@@ -183,6 +183,8 @@ def login(request):
         user = User.objects.filter(username=username).first()
         if user and check_password(password, user.password):
             # Set user as logged in
+            print(user.id)
+            request.session['user_id'] = user.id
             return redirect('index')
         else:
             error_message = "Invalid username or password."

@@ -1,6 +1,7 @@
 import requests
 import pyttsx3
 from django.contrib.auth.decorators import login_required
+from login.models import User
 
 from .models import TextSummary
 
@@ -34,14 +35,20 @@ def output(request):
     text = output["summary_text"]
     # user = request.user
 
-    # Save the generated summary to the database
-    text_summary = TextSummary.objects.create(
-        # user=user,
-        input_text=data,
-        generated_summary=text
-    )
+    # user_id = request.session.get('id', '')
 
-    # Create a new summary associated with the user (if available)
+    # Save the generated summary to the database
+    # text_summary = TextSummary.objects.create(
+    #     # user=user_id,
+    #     input_text=data,
+    #     generated_summary=text
+    # )
+
+    user_id = request.session.get('user_id')
+    
+
+    summary = TextSummary(user1=user_id, input_text=data, generated_summary=text)
+    summary.save()
 
     request.session['text_for_speech'] = text
     request.session['summarized_text'] = text
@@ -95,4 +102,3 @@ def translate_summary(request):
         return render(request, 'index.html', {"result": "Summarized text not found in session"})
 
 
-print("hello hi how are you")
