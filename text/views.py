@@ -94,3 +94,5 @@ def translate_summary(request):
         # If 'summarized_text' is not present, handle accordingly
         return render(request, 'index.html', {"result": "Summarized text not found in session"})
 
+
+print("hello hi how are you")
