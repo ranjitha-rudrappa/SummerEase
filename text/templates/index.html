@@ -16,38 +16,41 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
- <link rel="stylesheet" href="{% static 'summarease.css' %}">
-   <!-- <style>
+    <link rel="stylesheet" href="{% static 'summarease.css' %}">
+    <!-- <style>
 
    </style>
 </head>
 <body style="background-color:#cfdcf5;">
     <div id="leftPane" class="sidebar" onclick="toggleLeftPane()">
 
-        <header><h3  style="color: green; font-style: italic; font-size: 25px">SummarEase</h3></header>
+        <header><h3  style="color:  rgba(21, 187, 173); font-style: italic; font-size: 25px">SummarEase</h3></header>
         <ul>
         <li ><a href="{% url 'index' %}"><i class="fas fa-file-alt icon"style="color: rgb(0, 138, 119);"></i> Text Summarizer</a></li>
 
         <li><a href="{% url 'summarize' %}"><i class="fas fa-file-pdf icon"style="color: blue;"></i> PdfSummarizer</a></li>
-             <li><a href="{% url 'grammar_checker' %}"><i class="fas fa-code icon"style="color: green;"></i> GrammarCorrector</a></li>
+             <li><a href="{% url 'grammar_checker' %}"><i class="fas fa-code icon"style="color:  rgba(21, 187, 173);"></i> GrammarCorrector</a></li>
             <li><a href="{% url 'profile' %}" ><i class="fas fa-user icon" ></i> Profile</a></li>
         <li><a href="{% url 'home' %}" ><i class="fas fa-sign-out-alt icon" style="color:red"></i> Logout</a></li>
     </ul>
-    </div> --> 
+    </div> -->
     <style>
-            .top{
-      flex: 1;
-    background-color: #f4f7f8;
-    padding: 10px;
-    border-radius: 15px;
-    box-shadow: 0px 1px 4px 1px rgba(26, 25, 25, 0.160);
-    }
+        .top {
+            flex: 1;
+            background-color: #f4f7f8;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0px 1px 4px 1px rgba(26, 25, 25, 0.160);
+        }
+
         body {
             margin: 0;
             /* font-family: Arial, sans-serif; */
             font-family: 'Mukta', sans-serif;
             display: flex;
             flex-direction: column;
+            background-color: rgba(223, 223, 223, 0.421);
+
         }
 
         .navbar-vertical {
@@ -98,7 +101,7 @@
         }
 
         .navbar-horizontal {
-            background-color: green;
+            background-color: rgba(21, 187, 173);
             width: 100%;
             display: flex;
             align-items: center;
@@ -107,7 +110,7 @@
             box-sizing: border-box;
             z-index: 2;
             height: 60px;
-            position:fixed;
+            position: sticky;
         }
 
         .navbar-horizontal p {
@@ -132,21 +135,26 @@
     </div>
 
     <div class="navbar-vertical">
-        <a href="{% url 'index' %}"><img src="{% static 'images/summary.png' %}" alt="Home" title="Home"><span>Summary</span></a>
+        <a href="{% url 'index' %}"><img src="{% static 'images/summary.png' %}" alt="Home"
+                title="Home"><span>&nbsp;&nbsp;&nbsp;Summary</span></a>
 
-        <a href="{% url 'summarize' %}"><img src="{% static 'images/pdf.png' %}" alt="About" title="About"><span>Pdf</span></a>
-        <a href="{% url 'grammar_checker' %}"><img src="{% static 'images/grammar.png' %}" alt="Services" title="Services"><span>Grammar</span></a>
-        <a href="{% url 'history' %}"><img src="{% static 'images/history.png' %}" alt="Contact" title="Contact"><span>History</span></a>
-        <a href="{% url 'home' %}"><img src="{% static 'images/logout.png' %}" alt="Contact" title="Contact"><span>Logout</span></a>
+        <a href="{% url 'summarize' %}"><img src="{% static 'images/pdf.png' %}" alt="About"
+                title="About"><span>&nbsp;&nbsp;&nbsp;Pdf</span></a>
+        <a href="{% url 'grammar_checker' %}"><img src="{% static 'images/grammar.png' %}" alt="Services"
+                title="Services"><span>&nbsp;&nbsp;&nbsp;Grammar</span></a>
+        <a href="{% url 'history' %}"><img src="{% static 'images/history.png' %}" alt="Contact"
+                title="Contact"><span>&nbsp;&nbsp;&nbsp;History</span></a>
+        <a href="{% url 'home' %}"><img src="{% static 'images/logout.png' %}" alt="Contact"
+                title="Contact"><span>&nbsp;&nbsp;&nbsp;Logout</span></a>
     </div>
     </div>
     <!-- <div id="mainButton" onclick="toggleLeftPane()">Main Button</div> -->
 
     <div id="mainContent" style="background-color: white;">
 
-        <p style="color: green; font-size: 25px; font-family: 'Arial', 'Helvetica', sans-serif; text-align: center;">
-            Write like a pro, everywhere you write.</p>
-        <div class="top" style="background-color: green;">
+        <!-- <p style="color:  rgba(21, 187, 173); font-size: 25px; font-family: 'Arial', 'Helvetica', sans-serif; text-align: center;">
+            Write like a pro, everywhere you write.</p> -->
+        <div class="top" style="background-color:  rgba(21, 187, 173);">
             <div class="linesContainer">
                 <div>
 
@@ -161,9 +169,9 @@
 
                             <a href='{% url "texttospeech" %}'><i class="fas fa-microphone larger-icon"
                                     id="microphonebutton"
-                                    style="border: 1px solid green; background-color: green; color: white;"></i></a>
+                                    style="border: 1px solid  rgba(21, 187, 173); background-color:  rgba(21, 187, 173); color: white;"></i></a>
                             <a href="#" id="translatebutton"
-                                style="border: 1px solid green; background-color: green; color: white;"
+                                style="border: 1px solid  rgba(21, 187, 173); background-color:  rgba(21, 187, 173); color: white;"
                                 onclick="toggleLanguageMenu()">
                                 <i class="fas fa-language larger-icon"></i></a>
                             <div id="language-menu" style="display: none;">
@@ -182,7 +190,7 @@
                             </div>
 
                             <button id="deletebutton" title="Delete" onclick="deleteOutput()"
-                                style="margin-left:10%; border: 1px solid green; background-color: green; color:white"><i
+                                style="margin-left:10%; border: 1px solid  rgba(21, 187, 173); background-color:  rgba(21, 187, 173); color:white"><i
                                     class="fas fa-trash-alt larger-icon"></i></button>
                         </div>
                         <!-- Slider with 2 mid points -->
@@ -203,7 +211,7 @@
                             name="maxL" value="{{ maxL }}"></label>
 
                     <button id="button" onclick="processText()"
-                        style="color: white; margin-top: 20px; background-color:green; border-radius: 20px;  margin-left:30px; text-align: center;"><b>Summarize</b></button>
+                        style="color: white; margin-top: 20px; background-color: rgba(21, 187, 173); border-radius: 20px;  margin-left:30px; text-align: center;"><b>Summarize</b></button>
                 </div>
             </form>
 
