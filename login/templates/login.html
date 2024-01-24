@@ -164,13 +164,20 @@
                 order:2; /* Remove the margin between the image and the form */
             }
         }
+          .error-message {
+            color: red;
+        }
     </style>
 </head>
 
 <body>
     <div class="center-box">
         <div class="partition">
+
             <div class="login-form">
+ {% if error_message %}
+        <p class="error-message">{{ error_message }}</p>
+    {% endif %}
                 <h2>Login</h2>
                 <form method="post" action="{% url 'login' %}">
                      {% csrf_token %}
@@ -181,6 +188,7 @@
                     <input type="password" name="password" id="pwd">
                     <button type="submit">Login</button>
                 </form>
+
             </div>
 
             <div class="register-forgot">
@@ -192,6 +200,8 @@
             <img src="{% static 'login.png' %}" alt="Image">
         </div>
     </div>
+
+
 </body>
 
 </html>

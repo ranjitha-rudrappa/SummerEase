@@ -1,5 +1,6 @@
 import requests
 import pyttsx3
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 
 from .models import TextSummary
@@ -11,7 +12,7 @@ def index(request):
 
 text = ''
 
-
+@login_required()
 def output(request):
     api_url = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
     api_token = "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"
@@ -34,9 +35,10 @@ def output(request):
     text = output["summary_text"]
     # user = request.user
 
+
     # Save the generated summary to the database
     text_summary = TextSummary.objects.create(
-        # user=user,
+        user_id=request.user,
         input_text=data,
         generated_summary=text
     )

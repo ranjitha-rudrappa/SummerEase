@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="{% static 'grammar.css' %}">
 </head>
-<body>
+<body style="background-color:#cfdcf5;">
     <div id="leftPane" class="sidebar" onclick="toggleLeftPane()">
         
         <header><h3>SummarEase</h3></header>
@@ -27,16 +27,16 @@
         </ul>
     </div>    
     
-    <div id="mainContent" style="background-color:rgb(8, 113, 113);">
-        <h2 style="text-align: center; color:rgb(255, 255, 255);">GrammarChecker and corrector</h2>
+    <div id="mainContent" style="background-color:white;">
+        <h2 style="text-align: center; color:green;">GrammarChecker and corrector</h2>
             <div class="main" style="margin-top:-1% ;">
-        <div class="left" style="background-color:rgb(8, 113, 113);">
+        <div class="left" style="background-color:white;">
             <form action="{% url 'grammar_checker' %}" method="post" >
             {% csrf_token %}
 <!--            <textarea ondragstart="return false;" name="text_to_check" id="inputText" type="text" placeholder="Enter sentences to check and correct" rows="4" cols="30" required style="padding:10px;">{{ input }}</textarea>-->
-            <textarea ondragstart="return false;" name="text_to_check" id="inputText" placeholder="Enter sentences to check and correct" rows="4" cols="30" required style="padding: 10px; font-size: 25px; font-family: 'Arial', 'Helvetica', sans-serif;">{{ input }}</textarea>
+            <textarea ondragstart="return false;" name="text_to_check" id="inputText" placeholder="Enter sentences to check and correct" rows="4" cols="30" required style="padding: 10px; font-size: 15px; font-family: 'Arial', 'Helvetica', sans-serif;">{{ input }}</textarea>
 
-            <button id="button" > Correct </button>
+            <button id="button" style="background-color:green; color:white; border-radius:20px; "> Correct </button>
         </form>
         </div>
         <!-- <hr style="height: 90%; border: 0; border-left: 1px solid #ed0909; margin: 0 10px;"> -->

@@ -21,5 +21,6 @@ urlpatterns = [
     path('pdf/',include('pdf_to_summary.urls')),
     path('SummarEase/', include('login.urls')),
     path('Text/',include('text.urls')),
-    path('Grammar_Check/',include('grammar_correct.urls'))
+    path('Grammar_Check/',include('grammar_correct.urls')),
+    path('history/', include('history.urls')),
 ]
