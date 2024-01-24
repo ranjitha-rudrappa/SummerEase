@@ -81,7 +81,7 @@ body{
 
 .navbar-header {
     padding: 15px;
-    <!-- background-color: #2c3e50; -->
+    /* <!-- background-color: #2c3e50; --> */
 }
 
 .navbar-nav {
@@ -101,17 +101,17 @@ body{
 
 }
 
-.navbar-nav li:hover {
+/* .navbar-nav li:hover {
     <!-- background-color: #3d566e; -->
 
 
-}
+} */
 
 .navbar-nav li a {
     color: #00453f;
     text-decoration: none;
     left: -600px;
-    <!-- width: 150px; -->
+    /* <!-- width: 150px; --> */
 
 }
 
@@ -166,9 +166,9 @@ body{
 ul li:hover a{
     padding-left:9px ;
 }
-.sidebar ul i{
+/* .sidebar ul i{
     /* margin-right: 130px; */
-}
+
 #mainContent {
     flex:1;
     padding: 10px;
@@ -353,10 +353,10 @@ button[type="submit"]:hover {
 .icon{
     font-size: 130%;
 }
-#logout, #profileButton {
+/* #logout, #profileButton {
 
 
-}
+} */
 #logout {
     padding: 25px;
     margin: 5px;
@@ -545,9 +545,8 @@ button[type="submit"]:hover {
 ul li:hover a{
     padding-left:9px ;
 }
-.sidebar ul i{
+/* .sidebar ul i{
     /* margin-right: 130px; */
-}
 #mainContent {
     flex:1;
     padding: 10px;
@@ -706,10 +705,9 @@ button[type="submit"]:hover {
     margin-right:-10%;
 
 }
-.navbar-toggle {
+/* .navbar-toggle {
     /* color: #000000 !important; */
 
-}
 #but{
     margin-top: -4%;
     /* margin-left: 55%;
@@ -739,10 +737,10 @@ button[type="submit"]:hover {
 .icon{
     font-size: 130%;
 }
-#logout, #profileButton {
+/* #logout, #profileButton {
 
 
-}
+} */
 #logout {
     padding: 25px;
     margin: 5px;

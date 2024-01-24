@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'login',
     'pdf_to_summary',
     'text',
-    'grammar_correct'
+    'grammar_correct',
+    'history'
 ]
 
 MIDDLEWARE = [

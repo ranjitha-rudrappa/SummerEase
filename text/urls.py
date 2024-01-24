@@ -11,4 +11,5 @@ urlpatterns = [
     path('output', views.output,name='output'),
     path('texttospeech',views.texttospeech,name='texttospeech'),
     path('translate-summary/', translate_summary, name='translate_summary'),
+    
 ]

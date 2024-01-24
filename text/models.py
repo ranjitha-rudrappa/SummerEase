@@ -11,4 +11,4 @@ class TextSummary(models.Model):
 
 
     def __str__(self):
-        return f'Summary for {self.user.username}'
+        return f'Summary for {self.user1}'
