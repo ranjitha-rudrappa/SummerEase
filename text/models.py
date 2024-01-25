@@ -10,7 +10,9 @@ class TextSummary(models.Model):
     input_text = models.TextField()
     generated_summary = models.TextField()
     user1 = models.IntegerField(default=0)
-    # created_at = models.DateTimeField(default=timezone.now, editable=False)
+    created_at = models.DateTimeField(default=timezone.now, editable=False)
+    # created_at = models.DateTimeField(auto_now_add=True)
+
 
 
     def __str__(self):

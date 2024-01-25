@@ -18,6 +18,7 @@
             display: flex;
             flex-direction: column;
             background-color: rgba(223, 223, 223, 0.421);
+            margin-bottom: 10px;
 
         }
 
@@ -91,14 +92,36 @@
             text-align: center;
             flex-grow: 1;
         }
-
         .history-text {
             padding: 100px;
             /* background-color: rgba(223, 223, 223, 0.421); */
             width: 100%;
             height: 92vh;
             box-sizing: border-box;
-        }
+        }   
+
+        .history-card {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .history-card:hover {
+        background-color: #f0f0f0;
+    }
+
+    .history-card .content {
+        max-height: 50px; /* Set the initial height to show only a portion */
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+
+    .history-card.open .content {
+        max-height: 500px; /* Set the max-height to show all content when open */
+    }
     </style>
 </head>
 
@@ -122,7 +145,7 @@
                 title="Contact"><span>&nbsp;&nbsp;&nbsp;Logout</span></a>
     </div>
     </div>
-    <div class="history-text">
+    <!-- <div class="history-text">
         {% for i in history %}
         <h3>Input</h3>
         {{i.input_text}}
@@ -135,7 +158,25 @@
         <br>
         <br>
         {% endfor %}
+    </div> -->
+    <div class="history-text">
+        {% for i in history %}
+        <div class="history-card" onclick="toggleCard(this)">
+            <h3>Input</h3>
+            <div class="content">{{i.input_text}}</div>
+    
+            <h3>Output</h3>
+            <div class="content">{{i.generated_summary}}</div>
+            <h3>Created at</h3> <div class="content">{{i.created_at}}</div>
+        </div>
+        {% endfor %}
     </div>
+    
+    <script>
+        function toggleCard(card) {
+            card.classList.toggle('open');
+        }
+    </script>
 
 
 </body>
