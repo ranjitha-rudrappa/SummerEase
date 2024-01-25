@@ -1,21 +1,29 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Summarizer</title>
-    <!-- Add Font Awesome link (make sure to include this in your project) -->
-    <link rel="stylesheet"
-        href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
 
     <link rel="stylesheet" href="{% static 'grammar.css' %}">
-    <style> 
+    <style>
+                        .top {
+            flex: 1;
+            background-color: #f4f7f8;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0px 1px 4px 1px rgba(26, 25, 25, 0.160);
+        }
+
         body {
             margin: 0;
             /* font-family: Arial, sans-serif; */
@@ -38,11 +46,12 @@
             overflow: hidden;
             transition: width 0.3s ease-in;
             z-index: 1;
+            /* border: 0.5px solid grey; */
+            box-shadow: inset;
         }
 
         .navbar-vertical:hover {
             width: 200px;
-            /* padding: 20px; */
 
         }
 
@@ -56,7 +65,6 @@
             transition: background-color 0.3s ease-in;
             display: flex;
             flex-direction: row;
-            /* margin: 4px; */
             align-items: center;
         }
 
@@ -86,7 +94,6 @@
             position: fixed;
         }
 
-
         .navbar-horizontal p {
             width: 40px;
             color: white;
@@ -100,8 +107,7 @@
         }
     </style>
 </head>
-
-<body>
+<body style="background-color:#cfdcf5;">
     <div class="navbar-horizontal">
         <p>SummarEase</p>
         <span id="selected-option">Grammar Checker</span>
@@ -120,34 +126,32 @@
         <a href="{% url 'home' %}"><img src="{% static 'images/logout.png' %}" alt="Contact"
                 title="Contact"><span>&nbsp;&nbsp;&nbsp;Logout</span></a>
     </div>
+    </div>
+    <div id="mainContent" style="background-color:white;">
+        <h2 style="text-align: center; color:green;">GrammarChecker and corrector</h2>
+            <div class="main" style="margin-top:-1% ;">
+        <div class="left" style="background-color:white;">
+            <form action="{% url 'grammar_checker' %}" method="post" >
+            {% csrf_token %}
+<!--            <textarea ondragstart="return false;" name="text_to_check" id="inputText" type="text" placeholder="Enter sentences to check and correct" rows="4" cols="30" required style="padding:10px;">{{ input }}</textarea>-->
+            <textarea ondragstart="return false;" name="text_to_check" id="inputText" placeholder="Enter sentences to check and correct" rows="4" cols="30" required style="padding: 10px; font-size: 15px; font-family: 'Arial', 'Helvetica', sans-serif;">{{ input }}</textarea>
 
-    <div id="mainContent" style="background-color:rgb(8, 113, 113);">
-        <h2 style="text-align: center; color:rgb(255, 255, 255);">GrammarChecker and corrector</h2>
-        <div class="main" style="margin-top:-1% ;">
-            <div class="left" style="background-color:rgb(8, 113, 113);">
-                <form action="{% url 'grammar_checker' %}" method="post">
-                    {% csrf_token %}
-                    <!--            <textarea ondragstart="return false;" name="text_to_check" id="inputText" type="text" placeholder="Enter sentences to check and correct" rows="4" cols="30" required style="padding:10px;">{{ input }}</textarea>-->
-                    <textarea ondragstart="return false;" name="text_to_check" id="inputText"
-                        placeholder="Enter sentences to check and correct" rows="4" cols="30" required
-                        style="padding: 10px; font-size: 25px; font-family: 'Arial', 'Helvetica', sans-serif;">{{ input }}</textarea>
-
-                    <button id="button"> Correct </button>
-                </form>
-            </div>
-            <!-- <hr style="height: 90%; border: 0; border-left: 1px solid #ed0909; margin: 0 10px;"> -->
-            <div class="right">
-
-                {% if result %}
-                <p id="output">{{ result }}</p>
-                {% endif %}
-            </div>
-
-
+            <button id="button" style="background-color:green; color:white; border-radius:20px; "> Correct </button>
+        </form>
+        </div>
+        <!-- <hr style="height: 90%; border: 0; border-left: 1px solid #ed0909; margin: 0 10px;"> -->
+        <div class="right">
+            
+            {% if result %}
+            <p id="output">{{ result }}</p>
+            {% endif %}
+        </div>
+        
+        
         </div>
     </div>
-
-
+        
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
     <script>
         // Your JavaScript code for microphone, translation, and profile buttons
@@ -166,19 +170,19 @@
             alert('Profile button clicked!');
         });
 
-        function resizeTextbox() {
+        function resizeTextbox(){
             const textarea = document.getElementById('userInput');
             text.style.height = 'auto';
-            text.style.height = (textarea.scrollHeight + 2) + 'px';
+            text.style.height=(textarea.scrollHeight + 2)+'px';
 
         }
         function toggleDropdown() {
             var dropdown = document.getElementById("profileDropdown");
             dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
         }
-
+    
         // Close the dropdown if the user clicks outside of it
-        window.onclick = function (event) {
+        window.onclick = function(event) {
             if (!event.target.matches('#profileButton button')) {
                 var dropdown = document.getElementById("profileDropdown");
                 if (dropdown.style.display === "block") {
@@ -186,23 +190,22 @@
                 }
             }
         }
-
-        function toggleLeftPane() {
-            const leftPane = document.getElementById('leftPane');
-            leftPane.classList.toggle('hidden');
-        }
-
-
-
-        function deleteOutput() {
-            var outputDiv = document.getElementById('output');
-            outputDiv.innerText = '';
-
-            // Hide the delete button after deleting the content
-            var deleteButton = document.getElementById('deletebutton');
-            deleteButton.style.display = 'none';
-        }
+    
+            function toggleLeftPane() {
+              const leftPane = document.getElementById('leftPane');
+              leftPane.classList.toggle('hidden');
+            }
+            
+              
+          
+              function deleteOutput() {
+                var outputDiv = document.getElementById('output');
+                outputDiv.innerText = '';
+          
+                // Hide the delete button after deleting the content
+                var deleteButton = document.getElementById('deletebutton');
+                deleteButton.style.display = 'none';
+              }
     </script>
 </body>
-
-</html>
+</html> 

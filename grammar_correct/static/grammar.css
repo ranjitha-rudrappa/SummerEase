@@ -50,10 +50,6 @@ body{
     left: 0;
 }
 
-.navbar-header {
-    padding: 15px;
-    <!-- background-color: #2c3e50; -->
-}
 
 .navbar-nav {
     margin-top: 20px;
@@ -72,19 +68,9 @@ body{
 
 }
 
-.navbar-nav li:hover {
-    <!-- background-color: #3d566e; -->
 
 
-}
 
-.navbar-nav li a {
-    color: #00453f;
-    text-decoration: none;
-    left: -600px;
-    <!-- width: 150px; -->
-
-}
 
 .navbar-nav li.active {
     background-color: #3d566e;
@@ -309,10 +295,7 @@ button[type="submit"]:hover {
 .icon{
     font-size: 130%;
 }
-#logout, #profileButton {
 
-
-}
 #logout {
     padding: 25px;
     margin: 5px;
@@ -406,4 +389,6 @@ button[type="submit"]:hover {
         width: calc(100% - 20px);
     }
 }
+
+
 
