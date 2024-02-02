@@ -187,7 +187,7 @@ def login(request):
             request.session['user_id'] = user.id
             return redirect('index')
         else:
-            error_message = "Invalid username or password."
+            error_message = "Invalid username o r password."
             return render(request, 'login.html', {'error_message': error_message})
 
     return render(request, 'login.html')
