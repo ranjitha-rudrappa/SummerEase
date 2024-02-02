@@ -82,16 +82,15 @@ WSGI_APPLICATION = 'Text_app.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default':{
         'ENGINE': 'djongo',
-        'NAME':'summerease',
-            'client':{
-        'hosts': 'mongodb://admin:admin_password@3.91.148.97:27017/'
+        'NAME': 'summerease',
+        "CLIENT": {
+        'host': 'mongodb://admin:admin_password@3.91.148.97:27017/',
+       
+        }
     }
-    }
-    
 }
-
 # settings.py
 AUTH_USER_MODEL = 'login.User'
 
