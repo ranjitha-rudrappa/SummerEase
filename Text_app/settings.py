@@ -84,8 +84,12 @@ WSGI_APPLICATION = 'Text_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME':'text_appdb',
+        'NAME':'summerease',
+            'client':{
+        'hosts': 'mongodb://admin:admin_password@3.91.148.97:27017/'
     }
+    }
+    
 }
 
 # settings.py
