@@ -159,7 +159,7 @@
         <br>
         {% endfor %}
     </div> -->
-    <div class="history-text">
+    <!-- <div class="history-text">
         {% for i in history %}
         <div class="history-card" onclick="toggleCard(this)">
             <h3>Input</h3>
@@ -176,8 +176,46 @@
         function toggleCard(card) {
             card.classList.toggle('open');
         }
-    </script>
+    </script> -->
 
+    <div class="history-text">
+        {% for text_summary in text_summaries %}
+        <div class="history-card text-summary" onclick="toggleCard(this)">
+            <h3>Text Summary</h3>
+            <div class="content">
+                <h3>Input</h3>
+                {{ text_summary.input_text }}
+                <h3>Generated Summary</h3>
+                {{ text_summary.generated_summary }}
+                <h3>Created at</h3>
+                {{ text_summary.created_at }}
+            </div>
+        </div>
+        {% endfor %}
+    
+        {% for pdf_document in pdf_documents %}
+        <div class="history-card pdf-document" onclick="toggleCard(this)">
+            <h3>PDF Document</h3>
+            <div class="content">
+                <h3>PDF File</h3>
+                {{ pdf_document.pdf_file }}
+                <h3>Pages to Summarize</h3>
+                {{ pdf_document.pages_to_summarize }}
+                <h3>Summarized Text</h3>
+                {{ pdf_document.summarized_text }}
+                <h3>Created at</h3>
+                {{ pdf_document.created_at }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <script>
+        function toggleCard(card) {
+            card.classList.toggle('open');
+        }
+    </script>
+    
 
 </body>
 
