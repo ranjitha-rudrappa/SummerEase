@@ -9,6 +9,7 @@ def grammar_checker(request):
         input_text = request.POST.get('text_to_check', '')
 
         # Check grammar in the given text
+        # tool = LanguageTool('en-US')
         tool = LanguageTool('en-US')
         matches = tool.check(input_text)
 
@@ -25,8 +26,8 @@ def grammar_checker(request):
         
         user_id = request.session.get('user_id')
 
-        gram_check = GrammarCheck(user1=user_id, input_text=input_text, corrected_text=corrected_text)
-        gram_check.save()
+        # gram_check = GrammarCheck(user1=user_id, input_text=input_text, corrected_text=corrected_text)
+        # gram_check.save()
 
 
         # return JsonResponse(response_data)
