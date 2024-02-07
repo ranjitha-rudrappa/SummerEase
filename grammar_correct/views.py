@@ -26,8 +26,8 @@ def grammar_checker(request):
         
         user_id = request.session.get('user_id')
 
-        # gram_check = GrammarCheck(user1=user_id, input_text=input_text, corrected_text=corrected_text)
-        # gram_check.save()
+        gram_check = GrammarCheck(user1=user_id, input_text=input_text, corrected_text=corrected_text)
+        gram_check.save()
 
 
         # return JsonResponse(response_data)

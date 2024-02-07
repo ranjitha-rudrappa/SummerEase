@@ -51,6 +51,8 @@
 from django.shortcuts import render
 from text.models import TextSummary
 from pdf_to_summary.models import PdfDocument
+from grammar_correct.models import GrammarCheck
+
 
 def history(request):
     # Retrieve TextSummary objects
@@ -60,4 +62,6 @@ def history(request):
     pdf_documents = PdfDocument.objects.filter(user1=request.session.get('user_id'))
 
     # Return both types of objects to the template
-    return render(request, 'history.html', {'text_summaries': text_summaries, 'pdf_documents': pdf_documents})
+    grammars = GrammarCheck.objects.filter(user1=request.session.get('user_id'))
+
+    return render(request, 'history.html', {'text_summaries': text_summaries, 'pdf_documents': pdf_documents, 'grammars':grammars})
